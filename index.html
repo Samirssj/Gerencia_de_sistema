@@ -1,39 +1,301 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Portafolio - Gerencia de Sistemas</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gerencia de Sistemas de Información — Unidad I</title>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-<header class="navbar">
-  <img src="logo_upla.png" width="30px" alt="">
-  <div class="logo">UPLA 2026</div>
-  <nav>
-    <a class="active">Inicio</a>
-    <a href="unidad1.html">Unidad I</a>
-    <a href="unidad2.html">Unidad II</a>
-    <a href="unidad3.html">Unidad III</a>
-    <a href="unidad4.html">Unidad IV</a>
-  </nav>
+<!-- TOP HEADER WITH LOGO -->
+<div class="top-header">
+  <div class="top-header-inner">
+    <div class="top-header-logo">
+      <img src="logo_upla.png" alt="UPLA" class="upla-logo"/>
+      <div class="top-header-brand">
+        <span class="brand-name">Universidad Peruana Los Andes</span>
+        <span class="brand-sub">Facultad de Ingeniería · Ingeniería de Sistemas</span>
+      </div>
+    </div>
+    <img src="logo_upla_sistemas.png" width="44px" height="44px" alt="sistemas_upla" class="logo_sistemas"/>
+  </div>
+</div>
+ 
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">VII Ciclo · 2026-I · Código 332159</div>
+  <h1>Gerencia de<br/><span>Sistemas de Información</span></h1>
+  <p class="hero-sub">Unidad I — Administración en la Nube. Infraestructura de TI y tecnologías emergentes para gestionar adecuadamente.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="val">4</span>
+      <span class="lbl">Semanas</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="val">3</span>
+      <span class="lbl">Créditos</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="val">4h</span>
+      <span class="lbl">Semanales</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="val">25%</span>
+      <span class="lbl">Avance al final</span>
+    </div>
+  </div>
 </header>
-
-<section class="hero">
-  <div class="hero-text">
-    <span class="badge">PORTAFOLIO ACADÉMICO</span>
-    <h1>Gerencia de <span class="gold">Sistemas</span></h1>
-    <p>Gestión estratégica de tecnologías de información para la toma de decisiones empresariales.</p>
+ 
+<!-- NAV CAROUSEL -->
+<nav class="nav-strip">
+  <div class="nav-track-wrap">
+    <div class="nav-inner" id="navInner">
+      <button class="nav-pill active" onclick="scrollToSection('#intro')">Unidad I</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana1')">Semana 1 · Sistemas de Información</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana2')">Semana 2 · Computación en la Nube</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana3')">Semana 3 · Administración Cloud</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana4')">Semana 4 · Infraestructura de TI</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana5')">Semana 5 · Inteligencia de Negocios</button>
+      <button class="nav-pill" onclick="scrollToSection('#estrategias')">Estrategias Didácticas</button>
+      <!-- duplicate for infinite loop -->
+      <button class="nav-pill" onclick="scrollToSection('#intro')">Unidad I</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana1')">Semana 1 · Sistemas de Información</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana2')">Semana 2 · Computación en la Nube</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana3')">Semana 3 · Administración Cloud</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana4')">Semana 4 · Infraestructura de TI</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana5')">Semana 5 · Inteligencia de Negocios</button>
+      <button class="nav-pill" onclick="scrollToSection('#estrategias')">Estrategias Didácticas</button>
+    </div>
   </div>
-
-  <div class="card-info">
-    <h3>UPLA</h3>
-    <p>Ingeniería de Sistemas</p>
-    <p><strong>Curso:</strong> Gerencia de Sistemas</p>
-    <p><strong>Ciclo:</strong> 2026 - I</p>
-  </div>
-</section>
-
+</nav>
+ 
+<!-- CONTENT -->
+<main class="content">
+ 
+  <!-- Intro -->
+  <section id="intro" style="margin-bottom: 60px;">
+    <div class="section-label">Unidad I</div>
+    <h2 class="section-title">Administración<br/>en la Nube</h2>
+    <p class="section-desc">Explora los fundamentos de la computación en la nube, su infraestructura y las tecnologías emergentes que transforman la gestión empresarial moderna.</p>
+ 
+    <div class="cap-card">
+      <div class="cap-label">Capacidad de la Unidad</div>
+      <p>Conoce la administración y la empresa en la nube, infraestructura de TI y tecnologías emergentes, para gestionar adecuadamente.</p>
+    </div>
+  </section>
+ 
+  <!-- SEMANAS -->
+  <section>
+    <div class="section-label">Contenido semanal</div>
+    <h2 class="section-title">5 Semanas</h2>
+    <p class="section-desc">Selecciona cada semana para explorar sus temas y conceptos clave.</p>
+ 
+    <div class="weeks-grid">
+ 
+      <!-- SEMANA 1 -->
+      <div class="week-card" id="semana1" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">1</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 01</div>
+            <div class="week-title">La Información en la Empresa y Sistemas de Información</div>
+          </div>
+          <div class="week-chevron">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">La información en la empresa</span>
+              <span class="topic-chip">Sistemas de Información</span>
+              <span class="topic-chip">Tipos de SI</span>
+              <span class="topic-chip">Componentes de los SI</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              En esta primera semana se aborda el rol fundamental que tiene la información dentro de las organizaciones modernas. Se estudia qué es un Sistema de Información (SI), entendiéndolo como el conjunto de elementos interrelacionados que recopilan, procesan, almacenan y distribuyen datos para apoyar la toma de decisiones y el control en las empresas.<br/><br/>
+              Se revisan los <strong>tipos de sistemas de información</strong>: desde los Sistemas de Procesamiento de Transacciones (TPS) que manejan operaciones diarias, hasta los Sistemas de Soporte a Decisiones (DSS) y Sistemas de Información Ejecutiva (EIS) que sirven a niveles gerenciales.<br/><br/>
+              Finalmente, se identifican los <strong>componentes esenciales</strong> de un SI: hardware, software, datos, personas y procesos, comprendiendo cómo cada elemento contribuye al funcionamiento integral del sistema.
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- SEMANA 2 -->
+      <div class="week-card" id="semana2" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">2</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 02</div>
+            <div class="week-title">Computación en la Nube y Modelos de Despliegue</div>
+          </div>
+          <div class="week-chevron">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">Cloud Computing</span>
+              <span class="topic-chip">IaaS</span>
+              <span class="topic-chip">PaaS</span>
+              <span class="topic-chip">SaaS</span>
+              <span class="topic-chip">Modelos de Despliegue</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              La <strong>computación en la nube (Cloud Computing)</strong> representa un cambio de paradigma: en lugar de mantener servidores físicos propios, las empresas acceden a recursos informáticos — cómputo, almacenamiento, redes — a través de internet, pagando solo por lo que usan.<br/><br/>
+              Se estudian los <strong>modelos de servicio</strong>: <em>IaaS</em> (Infraestructura como Servicio, p. ej. AWS EC2), <em>PaaS</em> (Plataforma como Servicio, p. ej. Google App Engine) y <em>SaaS</em> (Software como Servicio, p. ej. Office 365), cada uno con distinto nivel de control y responsabilidad.<br/><br/>
+              Los <strong>modelos de despliegue</strong> determinan dónde se alojan los recursos: <em>Nube Pública</em> (accesible a cualquier empresa), <em>Nube Privada</em> (exclusiva para una organización), <em>Nube Híbrida</em> (combinación de ambas) y <em>Nube Comunitaria</em> (compartida por organizaciones con intereses comunes).
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- SEMANA 3 -->
+      <div class="week-card" id="semana3" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">3</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 03</div>
+            <div class="week-title">Administración en la Nube: Funciones y Tecnología</div>
+          </div>
+          <div class="week-chevron">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">Administración Cloud</span>
+              <span class="topic-chip">Funciones gerenciales</span>
+              <span class="topic-chip">Seguridad en la nube</span>
+              <span class="topic-chip">Virtualización</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              Esta semana se profundiza en <strong>cómo se administra un entorno de nube</strong>: el proceso de planificar, organizar, dirigir y controlar los recursos tecnológicos que residen en la nube para garantizar disponibilidad, rendimiento y seguridad.<br/><br/>
+              Las <strong>funciones clave</strong> de la administración en la nube incluyen la aprovisionamiento automatizado de recursos (auto-scaling), el monitoreo continuo de servicios, la gestión de costos (FinOps) y la orquestación de contenedores mediante tecnologías como Kubernetes y Docker.<br/><br/>
+              Desde la perspectiva tecnológica, se estudian los pilares que hacen posible la nube: <strong>virtualización</strong> (crear múltiples máquinas virtuales en un servidor físico), <strong>hipervisores</strong> (software que gestiona esas VMs) y los mecanismos de <strong>seguridad</strong> como cifrado, gestión de identidades (IAM) y políticas de acceso.
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- SEMANA 4 -->
+      <div class="week-card" id="semana4" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">4</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 04</div>
+            <div class="week-title">Infraestructura de TI: Modelos, Componentes y Tipos</div>
+          </div>
+          <div class="week-chevron">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">Infraestructura de TI</span>
+              <span class="topic-chip">Modelos de despliegue</span>
+              <span class="topic-chip">Componentes TI</span>
+              <span class="topic-chip">Tipos de infraestructura</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              La <strong>infraestructura de TI</strong> es el conjunto de hardware, software, redes, instalaciones y recursos relacionados que se requieren para desarrollar, probar, entregar, monitorear, controlar o soportar los servicios de TI en una organización.<br/><br/>
+              Se analizan sus <strong>componentes principales</strong>: servidores (físicos y virtuales), redes (LAN, WAN, SDN), almacenamiento (SAN, NAS, almacenamiento en nube), middleware, sistemas operativos y herramientas de gestión.<br/><br/>
+              Los <strong>tipos de infraestructura</strong> van desde la infraestructura tradicional on-premise hasta la infraestructura definida por software (SDI), pasando por la infraestructura convergente (CI) e hiperconvergente (HCI). Se comparan sus ventajas en términos de escalabilidad, costos de capital vs. operativos, y flexibilidad para adaptarse a demandas cambiantes del negocio.
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- SEMANA 5 (Unidad II - primera semana) -->
+      <div class="week-card" id="semana5" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">5</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 05 · Inicio Unidad II</div>
+            <div class="week-title">SI en los Negocios y Fundamentos de Inteligencia de Negocios</div>
+          </div>
+          <div class="week-chevron">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">SI en los Negocios</span>
+              <span class="topic-chip">Business Intelligence</span>
+              <span class="topic-chip">Bases de datos</span>
+              <span class="topic-chip">Administración de la información</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              Esta semana da inicio a la <strong>Unidad II</strong> y se centra en cómo los sistemas de información apoyan directamente las operaciones y decisiones de negocio. Se estudia el rol estratégico de los SI para lograr ventajas competitivas, mejorar procesos y facilitar la innovación empresarial.<br/><br/>
+              Los <strong>fundamentos de Inteligencia de Negocios (BI)</strong> abarcan el proceso de recopilar datos de múltiples fuentes, transformarlos en información significativa y presentarlos a través de dashboards y reportes para la toma de decisiones. Se introduce el concepto de <em>Data Warehouse</em> como repositorio centralizado.<br/><br/>
+              La <strong>administración de bases de datos</strong> cubre los DBMS relacionales (MySQL, SQL Server), modelos de datos, normalización, consultas SQL básicas y cómo una correcta gestión de la información es la base sobre la que se construyen todos los sistemas empresariales modernos.
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <!-- ESTRATEGIAS DIDÁCTICAS -->
+  <section class="strategy-section" id="estrategias">
+    <div class="section-label">Metodología</div>
+    <h2 class="section-title">Estrategias<br/>Didácticas</h2>
+    <p class="section-desc">El curso emplea metodologías activas para construir conocimiento de forma colaborativa y aplicada.</p>
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <div class="strategy-icon">📋</div>
+        <div class="strategy-name">Estudio de Casos</div>
+        <div class="strategy-desc">Análisis de situaciones reales en empresas para aplicar conceptos teóricos.</div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-icon">💬</div>
+        <div class="strategy-name">Discusiones en Clase</div>
+        <div class="strategy-desc">Debate guiado sobre temas actuales de TI y administración en la nube.</div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-icon">💡</div>
+        <div class="strategy-name">Lluvia de Ideas</div>
+        <div class="strategy-desc">Generación creativa de soluciones tecnológicas para problemas empresariales.</div>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-icon">🤝</div>
+        <div class="strategy-name">Aprendizaje Colaborativo</div>
+        <div class="strategy-desc">Trabajo en equipo para resolver problemas complejos de gestión de TI.</div>
+      </div>
+    </div>
+  </section>
+ 
+</main>
+ 
+<footer class="footer">
+  <strong>Gerencia de Sistemas de Información</strong><br/>
+  Universidad Peruana Los Andes · Facultad de Ingeniería<br/>
+  Dr. Magno Teófilo Baldeon Tovar · VII Ciclo 2026-I
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
