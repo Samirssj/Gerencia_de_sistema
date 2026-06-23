@@ -3,11 +3,548 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gerencia de Sistemas de Información — Unidad I</title>
+  <title>Gerencia de Sistemas de Información — Sílabo Completo</title>
   <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface2: #fbfbfd;
+      --border: rgba(0,0,0,0.08);
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --text-tertiary: #86868b;
+      --accent: #0071e3;
+      --accent-light: #e8f0fe;
+      --accent2: #34c759;
+      --accent3: #ff9f0a;
+      --accent4: #af52de;
+      --week-colors: #0071e3, #34c759, #ff9f0a, #af52de, #ff375f;
+      --radius: 18px;
+      --radius-sm: 12px;
+      --shadow: 0 2px 20px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+      --font: -apple-system, "SF Pro Display", "Helvetica Neue", sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP HEADER ──────────────────────────── */
+    .top-header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.07);
+    }
+    .top-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .top-header-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .upla-logo {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,113,227,0.18);
+      background: #e8f3fd;
+      padding: 2px;
+    }
+    .top-header-brand {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.2px;
+      line-height: 1.2;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.2px;
+    }
+    .top-header-code {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 5px 12px;
+      border-radius: 100px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── HERO ─────────────────────────────────── */
+    .hero {
+      background: linear-gradient(160deg, #000 0%, #1a1a2e 50%, #0d0d0d 100%);
+      padding: 80px 24px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,113,227,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.7);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 80px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.2s forwards;
+    }
+    .hero h1 span {
+      background: linear-gradient(90deg, #2997ff, #5e5ce6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 19px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.35s forwards;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.5s forwards;
+    }
+    .hero-meta-item {
+      text-align: center;
+    }
+    .hero-meta-item .val {
+      display: block;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .hero-meta-item .lbl {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.5px;
+    }
+    .hero-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.15);
+      align-self: center;
+    }
+
+    /* ── NAV CAROUSEL ────────────────────────── */
+    .nav-strip {
+      background: rgba(245,245,247,0.92);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .nav-strip::before,
+    .nav-strip::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 60px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .nav-strip::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(245,245,247,0.95), transparent);
+    }
+    .nav-strip::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(245,245,247,0.95), transparent);
+    }
+    .nav-track-wrap {
+      overflow: hidden;
+      width: 100%;
+    }
+    .nav-inner {
+      display: flex;
+      gap: 8px;
+      width: max-content;
+      animation: carouselScroll 45s linear infinite;
+      padding: 2px 60px;
+    }
+    .nav-inner:hover { animation-play-state: paused; }
+    @keyframes carouselScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .nav-pill {
+      white-space: nowrap;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1.5px solid transparent;
+      background: rgba(0,0,0,0.04);
+      font-family: var(--font);
+      flex-shrink: 0;
+    }
+    .nav-pill:hover {
+      background: rgba(0,0,0,0.08);
+      color: var(--text-primary);
+    }
+    .nav-pill.active {
+      background: var(--text-primary);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    /* ── CONTENT ────────────────────────────── */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .section-desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+
+    /* ── CAPACIDAD CARD ──────────────────────── */
+    .cap-card {
+      background: linear-gradient(135deg, #0071e3 0%, #5e5ce6 100%);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      color: #fff;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .cap-card.visible { opacity: 1; transform: translateY(0); }
+    .cap-card::after {
+      content: '☁';
+      position: absolute;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 80px;
+      opacity: 0.1;
+    }
+    .cap-card .cap-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+    .cap-card p {
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.6;
+      opacity: 0.95;
+      max-width: 600px;
+    }
+
+    /* ── WEEK CARDS ──────────────────────────── */
+    .weeks-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .week-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+    }
+    .week-card.visible { opacity: 1; transform: translateY(0); }
+    .week-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+
+    .week-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 28px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .week-number {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    /* Week number colors via data-color attribute */
+    .week-card[data-color="blue"]   .week-number { background: #0071e3; }
+    .week-card[data-color="green"]  .week-number { background: #34c759; }
+    .week-card[data-color="orange"] .week-number { background: #ff9f0a; }
+    .week-card[data-color="purple"] .week-number { background: #af52de; }
+    .week-card[data-color="red"]    .week-number { background: #ff375f; }
+    .week-card[data-color="teal"]   .week-number { background: #32ade6; }
+    .week-card[data-color="indigo"] .week-number { background: #5e5ce6; }
+    .week-card[data-color="pink"]   .week-number { background: #ff2d55; }
+
+    /* Topic chips per color */
+    .week-card[data-color="blue"]   .topic-chip { background: #e8f0fe; color: #0071e3; border-color: transparent; }
+    .week-card[data-color="green"]  .topic-chip { background: #e8faf0; color: #1d8348; border-color: transparent; }
+    .week-card[data-color="orange"] .topic-chip { background: #fff3e0; color: #b35400; border-color: transparent; }
+    .week-card[data-color="purple"] .topic-chip { background: #f3e5f5; color: #7b1fa2; border-color: transparent; }
+    .week-card[data-color="red"]    .topic-chip { background: #fdecea; color: #c0392b; border-color: transparent; }
+    .week-card[data-color="teal"]   .topic-chip { background: #e0f7fa; color: #00838f; border-color: transparent; }
+    .week-card[data-color="indigo"] .topic-chip { background: #ede7f6; color: #4527a0; border-color: transparent; }
+    .week-card[data-color="pink"]   .topic-chip { background: #fce4ec; color: #ad1457; border-color: transparent; }
+
+    /* ── UNIT DIVIDER ────────────────────────── */
+    .unit-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 36px 0 20px;
+    }
+    .unit-divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .unit-divider-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .unit-divider-badge.u1 { background: #e8f0fe; color: #0071e3; }
+    .unit-divider-badge.u2 { background: #e8faf0; color: #1d8348; }
+    .unit-divider-badge.u3 { background: #fff3e0; color: #b35400; }
+    .unit-divider-badge.u4 { background: #f3e5f5; color: #7b1fa2; }
+
+    .week-header-text { flex: 1; }
+    .week-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .week-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .week-chevron {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background 0.2s;
+      flex-shrink: 0;
+    }
+    .week-card.open .week-chevron { transform: rotate(180deg); background: #e5e5ea; }
+    .week-chevron svg { display: block; }
+
+    .week-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .week-body-inner {
+      padding: 0 28px 28px;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+
+    .topics-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .topic-chip {
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      background: var(--bg);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .week-card:nth-child(1) .topic-chip { background: #e8f0fe; color: #0071e3; border-color: transparent; }
+    .week-card:nth-child(2) .topic-chip { background: #e8faf0; color: #1d8348; border-color: transparent; }
+    .week-card:nth-child(3) .topic-chip { background: #fff3e0; color: #b35400; border-color: transparent; }
+    .week-card:nth-child(4) .topic-chip { background: #f3e5f5; color: #7b1fa2; border-color: transparent; }
+    .week-card:nth-child(5) .topic-chip { background: #fdecea; color: #c0392b; border-color: transparent; }
+
+    .explanation-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .explanation-text {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* ── STRATEGY SECTION ────────────────────── */
+    .strategy-section {
+      margin-top: 64px;
+    }
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .strategy-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .strategy-card.visible { opacity: 1; transform: translateY(0); }
+    .strategy-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .strategy-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .strategy-desc {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ──────────────────────────────── */
+    .footer {
+      background: var(--text-primary);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+    .footer strong { color: rgba(255,255,255,0.7); }
+
+    /* ── ANIMATIONS ──────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 80px 20px 60px; }
+      .hero-meta { gap: 20px; }
+      .week-header { padding: 20px; gap: 16px; }
+      .week-body-inner { padding: 0 20px 20px; padding-top: 20px; }
+    }
+  </style>
 </head>
 <body>
+
 <!-- TOP HEADER WITH LOGO -->
 <div class="top-header">
   <div class="top-header-inner">
@@ -21,16 +558,22 @@
     <img src="logo_upla_sistemas.png" width="44px" height="44px" alt="sistemas_upla" class="logo_sistemas"/>
   </div>
 </div>
- 
+
+
 <!-- HERO -->
 <header class="hero">
   <div class="hero-badge">VII Ciclo · 2026-I · Código 332159</div>
   <h1>Gerencia de<br/><span>Sistemas de Información</span></h1>
-  <p class="hero-sub">Unidad I — Administración en la Nube. Infraestructura de TI y tecnologías emergentes para gestionar adecuadamente.</p>
+  <p class="hero-sub">Sílabo completo — 4 Unidades, 16 semanas de contenido sobre Sistemas de Información, Cloud, BI, ERP y Seguridad.</p>
   <div class="hero-meta">
     <div class="hero-meta-item">
-      <span class="val">4</span>
+      <span class="val">16</span>
       <span class="lbl">Semanas</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="val">4</span>
+      <span class="lbl">Unidades</span>
     </div>
     <div class="hero-divider"></div>
     <div class="hero-meta-item">
@@ -42,62 +585,86 @@
       <span class="val">4h</span>
       <span class="lbl">Semanales</span>
     </div>
-    <div class="hero-divider"></div>
-    <div class="hero-meta-item">
-      <span class="val">25%</span>
-      <span class="lbl">Avance al final</span>
-    </div>
   </div>
 </header>
- 
+
 <!-- NAV CAROUSEL -->
 <nav class="nav-strip">
   <div class="nav-track-wrap">
     <div class="nav-inner" id="navInner">
-      <button class="nav-pill active" onclick="scrollToSection('#intro')">Unidad I</button>
-      <button class="nav-pill" onclick="scrollToSection('#semana1')">Semana 1 · Sistemas de Información</button>
-      <button class="nav-pill" onclick="scrollToSection('#semana2')">Semana 2 · Computación en la Nube</button>
-      <button class="nav-pill" onclick="scrollToSection('#semana3')">Semana 3 · Administración Cloud</button>
-      <button class="nav-pill" onclick="scrollToSection('#semana4')">Semana 4 · Infraestructura de TI</button>
-      <button class="nav-pill" onclick="scrollToSection('#semana5')">Semana 5 · Inteligencia de Negocios</button>
-      <button class="nav-pill" onclick="scrollToSection('#estrategias')">Estrategias Didácticas</button>
+      <button class="nav-pill" onclick="scrollToSection('#intro')">Inicio</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana1')">S1 · Sistemas de Información</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana2')">S2 · Computación en la Nube</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana3')">S3 · Administración Cloud</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana4')">S4 · Infraestructura de TI</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana5')">S5 · BI Fundamentos</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana6')">S6 · ERP, CRM y SCM</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana7')">S7 · E-Commerce</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana8')">S8 · DSS y Data Warehouse</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana9')">S9 · Seguridad en SI</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana10')">S10 · Ética y Marco Legal</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana11')">S11 · Auditoría TI</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana12')">S12 · Planificación Estratégica</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana13')">S13 · Gestión de Proyectos</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana14')">S14 · IA, IoT y Transformación Digital</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana15')">S15 · Implementación y Cambio</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana16')">S16 · Proyecto Final</button>
+      <button class="nav-pill" onclick="scrollToSection('#estrategias')">Estrategias</button>
       <!-- duplicate for infinite loop -->
-      <button class="nav-pill" onclick="scrollToSection('#intro')">Unidad I</button>
-      <button class="nav-pill" onclick="scrollToSection('#semana1')">Semana 1 · Sistemas de Información</button>
-      <button class="nav-pill" onclick="scrollToSection('#semana2')">Semana 2 · Computación en la Nube</button>
-      <button class="nav-pill" onclick="scrollToSection('#semana3')">Semana 3 · Administración Cloud</button>
-      <button class="nav-pill" onclick="scrollToSection('#semana4')">Semana 4 · Infraestructura de TI</button>
-      <button class="nav-pill" onclick="scrollToSection('#semana5')">Semana 5 · Inteligencia de Negocios</button>
-      <button class="nav-pill" onclick="scrollToSection('#estrategias')">Estrategias Didácticas</button>
+      <button class="nav-pill" onclick="scrollToSection('#intro')">Inicio</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana1')">S1 · Sistemas de Información</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana2')">S2 · Computación en la Nube</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana3')">S3 · Administración Cloud</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana4')">S4 · Infraestructura de TI</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana5')">S5 · BI Fundamentos</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana6')">S6 · ERP, CRM y SCM</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana7')">S7 · E-Commerce</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana8')">S8 · DSS y Data Warehouse</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana9')">S9 · Seguridad en SI</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana10')">S10 · Ética y Marco Legal</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana11')">S11 · Auditoría TI</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana12')">S12 · Planificación Estratégica</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana13')">S13 · Gestión de Proyectos</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana14')">S14 · IA, IoT y Transformación Digital</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana15')">S15 · Implementación y Cambio</button>
+      <button class="nav-pill" onclick="scrollToSection('#semana16')">S16 · Proyecto Final</button>
+      <button class="nav-pill" onclick="scrollToSection('#estrategias')">Estrategias</button>
     </div>
   </div>
 </nav>
- 
+
 <!-- CONTENT -->
 <main class="content">
- 
+
   <!-- Intro -->
   <section id="intro" style="margin-bottom: 60px;">
     <div class="section-label">Unidad I</div>
     <h2 class="section-title">Administración<br/>en la Nube</h2>
     <p class="section-desc">Explora los fundamentos de la computación en la nube, su infraestructura y las tecnologías emergentes que transforman la gestión empresarial moderna.</p>
- 
+
     <div class="cap-card">
       <div class="cap-label">Capacidad de la Unidad</div>
       <p>Conoce la administración y la empresa en la nube, infraestructura de TI y tecnologías emergentes, para gestionar adecuadamente.</p>
     </div>
   </section>
- 
+
   <!-- SEMANAS -->
   <section>
     <div class="section-label">Contenido semanal</div>
-    <h2 class="section-title">5 Semanas</h2>
-    <p class="section-desc">Selecciona cada semana para explorar sus temas y conceptos clave.</p>
- 
+    <h2 class="section-title">16 Semanas</h2>
+    <p class="section-desc">Selecciona cada semana para explorar sus temas y conceptos clave. Organizado en 4 unidades.</p>
+
     <div class="weeks-grid">
- 
+
+      <!-- ── UNIDAD I ── -->
+      <div class="unit-divider">
+        <div class="unit-divider-line"></div>
+        <span class="unit-divider-badge u1">Unidad I · Administración en la Nube</span>
+        <div class="unit-divider-line"></div>
+      </div>
+
       <!-- SEMANA 1 -->
-      <div class="week-card" id="semana1" onclick="toggleWeek(this)">
+      <div class="week-card" id="semana1" data-color="blue" onclick="toggleWeek(this)">
         <div class="week-header">
           <div class="week-number">1</div>
           <div class="week-header-text">
@@ -127,9 +694,9 @@
           </div>
         </div>
       </div>
- 
+
       <!-- SEMANA 2 -->
-      <div class="week-card" id="semana2" onclick="toggleWeek(this)">
+      <div class="week-card" id="semana2" data-color="green" onclick="toggleWeek(this)">
         <div class="week-header">
           <div class="week-number">2</div>
           <div class="week-header-text">
@@ -160,9 +727,9 @@
           </div>
         </div>
       </div>
- 
+
       <!-- SEMANA 3 -->
-      <div class="week-card" id="semana3" onclick="toggleWeek(this)">
+      <div class="week-card" id="semana3" data-color="orange" onclick="toggleWeek(this)">
         <div class="week-header">
           <div class="week-number">3</div>
           <div class="week-header-text">
@@ -192,9 +759,9 @@
           </div>
         </div>
       </div>
- 
+
       <!-- SEMANA 4 -->
-      <div class="week-card" id="semana4" onclick="toggleWeek(this)">
+      <div class="week-card" id="semana4" data-color="purple" onclick="toggleWeek(this)">
         <div class="week-header">
           <div class="week-number">4</div>
           <div class="week-header-text">
@@ -224,9 +791,9 @@
           </div>
         </div>
       </div>
- 
-      <!-- SEMANA 5 (Unidad II - primera semana) -->
-      <div class="week-card" id="semana5" onclick="toggleWeek(this)">
+
+      <!-- SEMANA 5 (Unidad II) -->
+      <div class="week-card" id="semana5" data-color="red" onclick="toggleWeek(this)">
         <div class="week-header">
           <div class="week-number">5</div>
           <div class="week-header-text">
@@ -256,10 +823,340 @@
           </div>
         </div>
       </div>
- 
+
+      <!-- ── UNIDAD II ── -->
+      <div class="unit-divider">
+        <div class="unit-divider-line"></div>
+        <span class="unit-divider-badge u2">Unidad II · Sistemas de Información en los Negocios</span>
+        <div class="unit-divider-line"></div>
+      </div>
+
+      <!-- SEMANA 6 -->
+      <div class="week-card" id="semana6" data-color="green" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">6</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 06 · Unidad II</div>
+            <div class="week-title">Sistemas Empresariales: ERP, CRM y SCM</div>
+          </div>
+          <div class="week-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">ERP</span>
+              <span class="topic-chip">CRM</span>
+              <span class="topic-chip">SCM</span>
+              <span class="topic-chip">Sistemas Empresariales</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              Esta semana se estudian los grandes <strong>sistemas integrados de gestión empresarial</strong>. El <em>ERP (Enterprise Resource Planning)</em> unifica los procesos de una organización —finanzas, RRHH, logística, producción— en una única plataforma, eliminando silos de datos (SAP, Oracle).<br/><br/>
+              El <em>CRM (Customer Relationship Management)</em> gestiona toda la relación con los clientes: ventas, marketing, soporte y fidelización, permitiendo personalizar la experiencia (Salesforce, HubSpot). El <em>SCM (Supply Chain Management)</em> optimiza la cadena de suministro desde proveedores hasta el cliente final, coordinando compras, inventario y distribución.<br/><br/>
+              Se analiza cómo estos sistemas generan <strong>ventajas competitivas</strong> al proporcionar visibilidad en tiempo real, automatizar procesos y facilitar la toma de decisiones basada en datos.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEMANA 7 -->
+      <div class="week-card" id="semana7" data-color="teal" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">7</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 07 · Unidad II</div>
+            <div class="week-title">Comercio Electrónico y Negocios Electrónicos</div>
+          </div>
+          <div class="week-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">E-Commerce</span>
+              <span class="topic-chip">E-Business</span>
+              <span class="topic-chip">Modelos B2B / B2C</span>
+              <span class="topic-chip">Pagos digitales</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              El <strong>comercio electrónico (e-commerce)</strong> abarca todas las transacciones comerciales realizadas a través de internet. Se estudian sus modelos: <em>B2C</em> (empresa a consumidor, como Amazon), <em>B2B</em> (empresa a empresa), <em>C2C</em> (consumidor a consumidor, como MercadoLibre) y <em>G2C</em> (gobierno a ciudadano).<br/><br/>
+              Los <strong>negocios electrónicos (e-business)</strong> van más allá del comercio: incluyen todos los procesos de negocio que se realizan digitalmente, desde la gestión interna hasta la colaboración con socios. Se revisan conceptos como la cadena de valor digital, la logística inversa y el marketing digital.<br/><br/>
+              También se abordan los <strong>medios de pago digitales</strong>: pasarelas de pago, billeteras electrónicas, criptomonedas y la seguridad necesaria (SSL, tokenización) para garantizar transacciones confiables.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEMANA 8 -->
+      <div class="week-card" id="semana8" data-color="indigo" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">8</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 08 · Unidad II</div>
+            <div class="week-title">Toma de Decisiones e Inteligencia de Negocios Avanzada</div>
+          </div>
+          <div class="week-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">DSS</span>
+              <span class="topic-chip">Data Warehouse</span>
+              <span class="topic-chip">OLAP</span>
+              <span class="topic-chip">Minería de datos</span>
+              <span class="topic-chip">Dashboards</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              Los <strong>Sistemas de Soporte a la Decisión (DSS)</strong> combinan datos, modelos analíticos y herramientas de visualización para ayudar a los gerentes a tomar decisiones complejas y no estructuradas. Se estudia su arquitectura y diferencias con los sistemas transaccionales.<br/><br/>
+              El <strong>Data Warehouse</strong> actúa como repositorio centralizado y orientado al análisis. Sobre él operan las herramientas <em>OLAP</em> (Online Analytical Processing) que permiten explorar datos multidimensionalmente mediante cubos y pivotes. La <strong>minería de datos</strong> aplica algoritmos estadísticos y de ML para descubrir patrones ocultos (clasificación, clustering, regresión).<br/><br/>
+              Se practican herramientas de <strong>visualización y dashboards</strong> (Power BI, Tableau) como medio para comunicar hallazgos analíticos a stakeholders de forma clara y accionable.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── UNIDAD III ── -->
+      <div class="unit-divider">
+        <div class="unit-divider-line"></div>
+        <span class="unit-divider-badge u3">Unidad III · Seguridad y Ética en los Sistemas de Información</span>
+        <div class="unit-divider-line"></div>
+      </div>
+
+      <!-- SEMANA 9 -->
+      <div class="week-card" id="semana9" data-color="orange" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">9</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 09 · Unidad III</div>
+            <div class="week-title">Seguridad en los Sistemas de Información</div>
+          </div>
+          <div class="week-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">Ciberseguridad</span>
+              <span class="topic-chip">Amenazas y vulnerabilidades</span>
+              <span class="topic-chip">Controles de seguridad</span>
+              <span class="topic-chip">Cifrado</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              La <strong>seguridad en sistemas de información</strong> busca proteger la confidencialidad, integridad y disponibilidad (triada CIA) de los datos y sistemas organizacionales. Se analizan las principales <strong>amenazas</strong>: malware, ransomware, phishing, ataques de denegación de servicio (DDoS) e ingeniería social.<br/><br/>
+              Los <strong>controles de seguridad</strong> se clasifican en preventivos (firewalls, antivirus, MFA), detectivos (IDS/IPS, SIEM) y correctivos (backups, planes de recuperación). Se estudia el <strong>cifrado</strong> simétrico y asimétrico (AES, RSA, TLS) como mecanismo fundamental de protección de datos en tránsito y en reposo.<br/><br/>
+              También se revisan marcos de referencia como <em>ISO 27001</em> y <em>NIST Cybersecurity Framework</em> para implementar una gestión de seguridad estructurada en la organización.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEMANA 10 -->
+      <div class="week-card" id="semana10" data-color="red" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">10</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 10 · Unidad III</div>
+            <div class="week-title">Ética, Privacidad y Marco Legal en TI</div>
+          </div>
+          <div class="week-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">Ética en TI</span>
+              <span class="topic-chip">Privacidad de datos</span>
+              <span class="topic-chip">Marco legal</span>
+              <span class="topic-chip">RGPD / Ley 29733</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              La <strong>ética en tecnologías de información</strong> examina los dilemas morales que surgen del uso de SI: privacidad, propiedad intelectual, acceso a la información y responsabilidad por el uso de datos. Se analiza el impacto social de decisiones tecnológicas (sesgos algorítmicos, vigilancia digital).<br/><br/>
+              La <strong>privacidad de datos</strong> es un derecho fundamental regulado legalmente. En el Perú, la <em>Ley N.° 29733</em> de Protección de Datos Personales establece obligaciones para quienes tratan datos de ciudadanos. A nivel internacional, el <em>RGPD europeo</em> marca el estándar más exigente con principios de minimización, consentimiento y derecho al olvido.<br/><br/>
+              Se revisan también temas de <strong>propiedad intelectual</strong> en software, licenciamiento (software libre vs. propietario), ciberdelitos tipificados en la legislación peruana y la responsabilidad civil y penal de los profesionales de SI.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEMANA 11 -->
+      <div class="week-card" id="semana11" data-color="pink" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">11</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 11 · Unidad III</div>
+            <div class="week-title">Auditoría de Sistemas de Información</div>
+          </div>
+          <div class="week-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">Auditoría TI</span>
+              <span class="topic-chip">COBIT</span>
+              <span class="topic-chip">Controles internos</span>
+              <span class="topic-chip">Gestión de riesgos</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              La <strong>auditoría de sistemas de información</strong> es el proceso de evaluar y verificar que los controles de TI son adecuados, que los sistemas son confiables y que los datos son íntegros. Se diferencia de la auditoría financiera en su enfoque técnico-organizacional.<br/><br/>
+              El marco <strong>COBIT (Control Objectives for Information and Related Technologies)</strong> proporciona un conjunto de prácticas y objetivos de control para el gobierno y gestión de TI empresarial. Se estudian sus dominios: planificar, adquirir, entregar, soportar y monitorear.<br/><br/>
+              La <strong>gestión de riesgos de TI</strong> implica identificar, evaluar y mitigar los riesgos asociados al uso de tecnología: fallos de sistema, brechas de seguridad, pérdida de datos. Se aplica la metodología de análisis de riesgo cualitativo y cuantitativo para priorizar controles.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── UNIDAD IV ── -->
+      <div class="unit-divider">
+        <div class="unit-divider-line"></div>
+        <span class="unit-divider-badge u4">Unidad IV · Gerencia Estratégica de Sistemas de Información</span>
+        <div class="unit-divider-line"></div>
+      </div>
+
+      <!-- SEMANA 12 -->
+      <div class="week-card" id="semana12" data-color="purple" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">12</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 12 · Unidad IV</div>
+            <div class="week-title">Planificación Estratégica de TI y Alineación con el Negocio</div>
+          </div>
+          <div class="week-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">PETI</span>
+              <span class="topic-chip">Alineación estratégica</span>
+              <span class="topic-chip">Gobierno de TI</span>
+              <span class="topic-chip">IT Balanced Scorecard</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              La <strong>Planificación Estratégica de Tecnologías de Información (PETI)</strong> es el proceso de definir hacia dónde debe ir la TI de una organización en los próximos años, alineada con los objetivos del negocio. Se elabora un diagnóstico de la situación actual (AS-IS) y se proyecta el estado deseado (TO-BE).<br/><br/>
+              La <strong>alineación estratégica TI-negocio</strong> garantiza que cada inversión tecnológica responda a una necesidad organizacional real. Se utilizan herramientas como la <em>Matriz de Aplicaciones de McFarlan</em> para clasificar sistemas según su impacto estratégico.<br/><br/>
+              El <strong>Gobierno de TI</strong> (IT Governance) establece responsabilidades, procesos y estructuras de decisión para que TI genere valor. El <em>IT Balanced Scorecard</em> traduce la estrategia de TI en objetivos medibles mediante indicadores (KPIs) en cuatro perspectivas: financiera, clientes, procesos internos y aprendizaje.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEMANA 13 -->
+      <div class="week-card" id="semana13" data-color="blue" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">13</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 13 · Unidad IV</div>
+            <div class="week-title">Gestión de Proyectos de Sistemas de Información</div>
+          </div>
+          <div class="week-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">Gestión de proyectos TI</span>
+              <span class="topic-chip">PMBOK</span>
+              <span class="topic-chip">Metodologías ágiles</span>
+              <span class="topic-chip">Scrum / Kanban</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              La <strong>gestión de proyectos de SI</strong> aplica principios y técnicas para planificar, ejecutar y controlar el desarrollo e implementación de sistemas de información dentro de presupuesto, tiempo y alcance definidos. Se revisan las fases: inicio, planificación, ejecución, monitoreo y cierre.<br/><br/>
+              El <strong>PMBOK (Project Management Body of Knowledge)</strong> del PMI ofrece el estándar tradicional de gestión por áreas de conocimiento (integración, alcance, cronograma, costos, calidad, riesgos, etc.). En contraste, las <strong>metodologías ágiles</strong> (Scrum, Kanban, XP) permiten entregas incrementales con alta adaptabilidad al cambio.<br/><br/>
+              Se practica la elaboración de un <strong>plan de proyecto de TI</strong>: EDT (Estructura de Desglose de Trabajo), cronograma con diagrama de Gantt, gestión de stakeholders y matriz de riesgos con planes de respuesta.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEMANA 14 -->
+      <div class="week-card" id="semana14" data-color="teal" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">14</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 14 · Unidad IV</div>
+            <div class="week-title">Tendencias Emergentes: IA, IoT y Transformación Digital</div>
+          </div>
+          <div class="week-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">Inteligencia Artificial</span>
+              <span class="topic-chip">IoT</span>
+              <span class="topic-chip">Big Data</span>
+              <span class="topic-chip">Transformación Digital</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              La <strong>Inteligencia Artificial (IA)</strong> está redefiniendo los sistemas de información: desde chatbots y asistentes virtuales hasta sistemas de recomendación, detección de fraude y análisis predictivo. Se revisan los conceptos de Machine Learning, Deep Learning y sus aplicaciones empresariales concretas.<br/><br/>
+              El <strong>Internet de las Cosas (IoT)</strong> conecta dispositivos físicos a internet, generando enormes volúmenes de datos en tiempo real. En combinación con <em>Big Data</em> (Hadoop, Spark) y plataformas de streaming (Kafka), permite monitorear operaciones, optimizar cadenas de suministro y habilitar ciudades inteligentes.<br/><br/>
+              La <strong>Transformación Digital</strong> es el proceso integral de repensar modelos de negocio, cultura organizacional y experiencia del cliente aprovechando tecnologías digitales. Se analizan casos de empresas peruanas y latinoamericanas que han liderado procesos exitosos de transformación.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEMANA 15 -->
+      <div class="week-card" id="semana15" data-color="indigo" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">15</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 15 · Unidad IV</div>
+            <div class="week-title">Implementación de SI y Gestión del Cambio Organizacional</div>
+          </div>
+          <div class="week-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">Implementación de SI</span>
+              <span class="topic-chip">Gestión del cambio</span>
+              <span class="topic-chip">Capacitación usuarios</span>
+              <span class="topic-chip">Resistencia al cambio</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              La <strong>implementación de un SI</strong> es una de las etapas más críticas y con mayor tasa de fracaso en proyectos de TI. Se estudian las estrategias de implantación: conversión directa (big bang), paralela, piloto y por fases, con sus ventajas y riesgos asociados.<br/><br/>
+              La <strong>gestión del cambio organizacional</strong> reconoce que la tecnología sola no garantiza el éxito: las personas deben adoptar los nuevos sistemas. Se aplican modelos como <em>ADKAR</em> (Awareness, Desire, Knowledge, Ability, Reinforcement) y el modelo de Kotter de 8 pasos para liderar el cambio.<br/><br/>
+              La <strong>resistencia al cambio</strong> es el principal obstáculo en implementaciones de SI. Se analizan sus causas (miedo a la obsolescencia, pérdida de control, falta de información) y estrategias para superarla: comunicación efectiva, participación temprana de usuarios clave y programas de capacitación estructurados.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEMANA 16 -->
+      <div class="week-card" id="semana16" data-color="green" onclick="toggleWeek(this)">
+        <div class="week-header">
+          <div class="week-number">16</div>
+          <div class="week-header-text">
+            <div class="week-label">Semana 16 · Cierre de Curso</div>
+            <div class="week-title">Evaluación Final y Presentación de Proyectos Integradores</div>
+          </div>
+          <div class="week-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="#6e6e73" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="week-body">
+          <div class="week-body-inner">
+            <div class="topics-row">
+              <span class="topic-chip">Proyecto Integrador</span>
+              <span class="topic-chip">Evaluación final</span>
+              <span class="topic-chip">Exposición grupal</span>
+              <span class="topic-chip">Retroalimentación</span>
+            </div>
+            <div class="explanation-title">Explicación</div>
+            <div class="explanation-text">
+              La semana de cierre está dedicada a la <strong>presentación del proyecto integrador</strong>, en el que los equipos demuestran haber aplicado los conocimientos adquiridos durante el semestre: desde el análisis de la situación actual de una empresa real hasta la propuesta de solución tecnológica fundamentada en los conceptos del curso.<br/><br/>
+              Cada equipo expone su propuesta cubriendo: diagnóstico de sistemas existentes, propuesta de mejora (puede incluir implementación de ERP, migración a la nube, estrategia de BI o plan de seguridad), análisis costo-beneficio y plan de implementación con gestión del cambio.<br/><br/>
+              La <strong>evaluación final</strong> pondera el dominio conceptual (examen), la calidad del proyecto integrador y las competencias de comunicación oral. Se realiza también una sesión de <strong>retroalimentación grupal</strong> que consolida el aprendizaje y conecta los contenidos del curso con el ejercicio profesional del Ingeniero de Sistemas.
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
- 
+
   <!-- ESTRATEGIAS DIDÁCTICAS -->
   <section class="strategy-section" id="estrategias">
     <div class="section-label">Metodología</div>
@@ -288,14 +1185,52 @@
       </div>
     </div>
   </section>
- 
+
 </main>
- 
+
 <footer class="footer">
   <strong>Gerencia de Sistemas de Información</strong><br/>
   Universidad Peruana Los Andes · Facultad de Ingeniería<br/>
   Dr. Magno Teófilo Baldeon Tovar · VII Ciclo 2026-I
 </footer>
-<script src="script.js"></script>
+
+<script>
+  // Toggle week expansion
+  function toggleWeek(card) {
+    const body = card.querySelector('.week-body');
+    const isOpen = card.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.week-card').forEach(c => {
+      c.classList.remove('open');
+      c.querySelector('.week-body').style.maxHeight = '0';
+    });
+    // Open this one if it was closed
+    if (!isOpen) {
+      card.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+
+  // Scroll to section
+  function scrollToSection(id) {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Intersection Observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.week-card, .cap-card, .strategy-card').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.07) + 's';
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
